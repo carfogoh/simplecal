@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Calculator</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="../css/calculator.css">
+
+</head>
+<body>
+    <!-- Main container for the calculator -->
+    <div class="calculator-container">
+        
+        <!-- Calculator title -->
+        <h1>Calculator</h1>
+        
+        <!-- Display screen showing input and result -->
+        <div class="display">
+            <!-- Shows the current calculation -->
+            <div class="calculation" id="calculation"></div>
+            <!-- Shows the result -->
+            <div class="result" id="result">0</div>
+        </div>
+        
+        <!-- Tab navigation for different calculator modes -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('basic')">Basic</button>
+            <button class="tab-button" onclick="showTab('advanced')">Advanced</button>
+            <button class="tab-button" onclick="showTab('scientific')">Scientific</button>
+        </div>
+        
+        <!-- Basic Calculator Buttons -->
+        <div id="basic-tab" class="tab-content active">
+            <div class="buttons">
+                <!-- First row: Clear and delete buttons -->
+                <button class="btn function" onclick="clearDisplay()">C</button>
+                <button class="btn function" onclick="deleteLast()">DEL</button>
+                <button class="btn operator" onclick="appendToDisplay('/')">/</button>
+                <button class="btn operator" onclick="appendToDisplay('*')">×</button>
+                
+                <!-- Number buttons and operators -->
+                <button class="btn number" onclick="appendToDisplay('7')">7</button>
+                <button class="btn number" onclick="appendToDisplay('8')">8</button>
+                <button class="btn number" onclick="appendToDisplay('9')">9</button>
+                <button class="btn operator" onclick="appendToDisplay('-')">-</button>
+                
+                <button class="btn number" onclick="appendToDisplay('4')">4</button>
+                <button class="btn number" onclick="appendToDisplay('5')">5</button>
+                <button class="btn number" onclick="appendToDisplay('6')">6</button>
+                <button class="btn operator" onclick="appendToDisplay('+')">+</button>
+                
+                <button class="btn number" onclick="appendToDisplay('1')">1</button>
+                <button class="btn number" onclick="appendToDisplay('2')">2</button>
+                <button class="btn number" onclick="appendToDisplay('3')">3</button>
+                <button class="btn equals" onclick="calculate()" style="grid-row: span 2;">=</button>
+                
+                <button class="btn number" onclick="appendToDisplay('0')" style="grid-column: span 2;">0</button>
+                <button class="btn number" onclick="appendToDisplay('.')">.</button>
+            </div>
+        </div>
+        
+        <!-- Advanced Calculator Buttons -->
+        <div id="advanced-tab" class="tab-content">
+            <div class="buttons">
+                <!-- Advanced mathematical operations -->
+                <button class="btn function" onclick="clearDisplay()">C</button>
+                <button class="btn function" onclick="deleteLast()">DEL</button>
+                <button class="btn operator" onclick="calculatePower()">x^y</button>
+                <button class="btn operator" onclick="calculateSquareRoot()">√</button>
+                
+                <button class="btn number" onclick="appendToDisplay('7')">7</button>
+                <button class="btn number" onclick="appendToDisplay('8')">8</button>
+                <button class="btn number" onclick="appendToDisplay('9')">9</button>
+                <button class="btn operator" onclick="calculateModulus()">%</button>
+                
+                <button class="btn number" onclick="appendToDisplay('4')">4</button>
+                <button class="btn number" onclick="appendToDisplay('5')">5</button>
+                <button class="btn number" onclick="appendToDisplay('6')">6</button>
+                <button class="btn operator" onclick="appendToDisplay('*')">×</button>
+                
+                <button class="btn number" onclick="appendToDisplay('1')">1</button>
+                <button class="btn number" onclick="appendToDisplay('2')">2</button>
+                <button class="btn number" onclick="appendToDisplay('3')">3</button>
+                <button class="btn operator" onclick="appendToDisplay('-')">-</button>
+                
+                <button class="btn number" onclick="appendToDisplay('0')">0</button>
+                <button class="btn number" onclick="appendToDisplay('.')">.</button>
+                <button class="btn operator" onclick="appendToDisplay('+')">+</button>
+                <button class="btn equals" onclick="calculate()">=</button>
+            </div>
+        </div>
+        
+        <!-- Scientific Calculator Buttons -->
+        <div id="scientific-tab" class="tab-content">
+            <div class="buttons">
+                <!-- Scientific mathematical operations -->
+                <button class="btn function" onclick="clearDisplay()">C</button>
+                <button class="btn function" onclick="deleteLast()">DEL</button>
+                <button class="btn operator" onclick="calculateFactorial()">n!</button>
+                <button class="btn operator" onclick="calculateAbsolute()">|x|</button>
+                
+                <button class="btn operator" onclick="calculateSin()">sin</button>
+                <button class="btn operator" onclick="calculateCos()">cos</button>
+                <button class="btn operator" onclick="calculateTan()">tan</button>
+                <button class="btn operator" onclick="calculateLog()">log</button>
+                
+                <button class="btn number" onclick="appendToDisplay('7')">7</button>
+                <button class="btn number" onclick="appendToDisplay('8')">8</button>
+                <button class="btn number" onclick="appendToDisplay('9')">9</button>
+                <button class="btn operator" onclick="appendToDisplay('/')">/</button>
+                
+                <button class="btn number" onclick="appendToDisplay('4')">4</button>
+                <button class="btn number" onclick="appendToDisplay('5')">5</button>
+                <button class="btn number" onclick="appendToDisplay('6')">6</button>
+                <button class="btn operator" onclick="appendToDisplay('*')">×</button>
+                
+                <button class="btn number" onclick="appendToDisplay('1')">1</button>
+                <button class="btn number" onclick="appendToDisplay('2')">2</button>
+                <button class="btn number" onclick="appendToDisplay('3')">3</button>
+                <button class="btn operator" onclick="appendToDisplay('-')">-</button>
+                
+                <button class="btn number" onclick="appendToDisplay('0')">0</button>
+                <button class="btn number" onclick="appendToDisplay('.')">.</button>
+                <button class="btn operator" onclick="appendToDisplay('+')">+</button>
+                <button class="btn equals" onclick="calculate()">=</button>
+            </div>
+        </div>
+        
+        <!-- History section to show previous calculations -->
+        <div class="history">
+            <h3>History</h3>
+            <div id="history-list"></div>
+            <button class="btn function" onclick="clearHistory()">Clear History</button>
+        </div>
+    </div>
+    
+    <!-- Link to external JavaScript file -->
+    <!-- Link to external js file -->
+    <script src="../js/cal.js"></script>
+
+</body>
+</html>

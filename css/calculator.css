@@ -1,0 +1,260 @@
+---
+
+**2. style.css**
+```css
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+/* Body styling - centers the calculator on the page */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Main calculator container */
+.calculator-container {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Calculator title */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+/* Display screen container */
+.display {
+    background: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    word-wrap: break-word;
+}
+
+/* Shows the current calculation being entered */
+.calculation {
+    color: #888;
+    font-size: 16px;
+    min-height: 20px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+/* Shows the result of calculation */
+.result {
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: right;
+    word-break: break-all;
+}
+
+/* Tab navigation container */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Individual tab button */
+.tab-button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: #f0f0f0;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Tab button hover effect */
+.tab-button:hover {
+    background: #e0e0e0;
+}
+
+/* Active tab styling */
+.tab-button.active {
+    background: #667eea;
+    color: white;
+}
+
+/* Tab content container */
+.tab-content {
+    display: none;
+}
+
+/* Show active tab content */
+.tab-content.active {
+    display: block;
+}
+
+/* Button grid layout */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* Base button styling */
+.btn {
+    padding: 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+
+/* Button hover effect - slight scale up */
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Button active effect - slight scale down when clicked */
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Number button styling - light gray background */
+.btn.number {
+    background: #f0f0f0;
+    color: #333;
+}
+
+/* Number button hover effect */
+.btn.number:hover {
+    background: #e0e0e0;
+}
+
+/* Operator button styling - blue background */
+.btn.operator {
+    background: #667eea;
+    color: white;
+}
+
+/* Operator button hover effect */
+.btn.operator:hover {
+    background: #5568d3;
+}
+
+/* Function button styling (Clear, Delete) - orange background */
+.btn.function {
+    background: #ff6b6b;
+    color: white;
+}
+
+/* Function button hover effect */
+.btn.function:hover {
+    background: #ee5a52;
+}
+
+/* Equals button styling - green background */
+.btn.equals {
+    background: #51cf66;
+    color: white;
+}
+
+/* Equals button hover effect */
+.btn.equals:hover {
+    background: #40c057;
+}
+
+/* History section container */
+.history {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+}
+
+/* History section title */
+.history h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+/* History list container */
+#history-list {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+/* Individual history item */
+.history-item {
+    padding: 10px;
+    background: white;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+/* History item hover effect */
+.history-item:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* Custom scrollbar for history list */
+#history-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+#history-list::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+
+#history-list::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 480px) {
+    .calculator-container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .result {
+        font-size: 28px;
+    }
+    
+    .btn {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
